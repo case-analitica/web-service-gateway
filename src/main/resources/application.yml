@@ -5,6 +5,10 @@ spring:
   application:
     name: web-service-gateway
 
+customer:
+  service:
+    url: ${GATEWAY_CUSTOMER_URL:localhost:8082}
+
 eureka:
   instance:
     hostname: ${EUREKA_HOST:localhost}
