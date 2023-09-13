@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Map;
 
+@FeignClient(name = "customer-api", url = "${customer.api.url}")
 
-@FeignClient(name = "customer-gateway", url = "${customer.service.url}")
 public interface CustomerGateway {
 
     @GetMapping("/api/customer")
