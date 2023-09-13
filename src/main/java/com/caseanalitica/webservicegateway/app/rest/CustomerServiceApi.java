@@ -23,7 +23,7 @@ public class CustomerServiceApi {
     @GetMapping
     public ResponseEntity<ApiResponse> getCustomers(@RequestParam(value = "filterName", required = false, defaultValue = "") String filterName,
                                                     @RequestParam(value = "filterValue", required = false, defaultValue = "") String filterValue,
-                                                    @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+                                                    @RequestParam(value = "pageIndex", required = false, defaultValue = "0") Integer pageIndex,
                                                     @RequestParam(value = "sort", required = false, defaultValue = "nome") String sort,
                                                     @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
                                                     @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
@@ -31,7 +31,7 @@ public class CustomerServiceApi {
         Map<String, String> customerMap = new HashMap<>();
         customerMap.put("filterName", filterName);
         customerMap.put("filterValue", filterValue);
-        customerMap.put("page", String.valueOf(page));
+        customerMap.put("pageIndex", String.valueOf(pageIndex));
         customerMap.put("sort", sort);
         customerMap.put("direction", direction);
         customerMap.put("pageSize", String.valueOf(pageSize));

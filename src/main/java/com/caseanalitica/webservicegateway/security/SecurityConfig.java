@@ -19,9 +19,8 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        httpSecurity.cors(Customizer.withDefaults());
-
         return httpSecurity
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(
                         authorizeConfig -> {
                             authorizeConfig.requestMatchers("/**").permitAll();
