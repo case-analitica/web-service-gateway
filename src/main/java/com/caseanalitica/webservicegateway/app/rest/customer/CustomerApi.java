@@ -1,7 +1,8 @@
 package com.caseanalitica.webservicegateway.app.rest.customer;
 
-import com.caseanalitica.webservicegateway.app.dto.ApiResponse;
+import com.caseanalitica.commons.ApiResponse;
 import com.caseanalitica.webservicegateway.infra.gateway.CustomerGateway;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,32 +14,30 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/customer-api")
+@RequestMapping("/customer")
 public class CustomerApi {
 
-    private final CustomerGateway customerGateway;
+    @Autowired
+    CustomerGateway customerGateway;
 
-    public CustomerApi(CustomerGateway customerGateway) {
-        this.customerGateway = customerGateway;
+    @GetMapping
+    public ResponseEntity<ApiResponse> getCustomers(@RequestParam(value = "filterName", required = false, defaultValue = "") String filterName,
+                                                    @RequestParam(value = "filterValue", required = false, defaultValue = "") String filterValue,
+                                                    @RequestParam(value = "pageIndex", required = false, defaultValue = "0") Integer pageIndex,
+                                                    @RequestParam(value = "sort", required = false, defaultValue = "nome") String sort,
+                                                    @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
+                                                    @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
+
+        Map<String, String> customerMap = new HashMap<>();
+        customerMap.put("filterName", filterName);
+        customerMap.put("filterValue", filterValue);
+        customerMap.put("pageIndex", String.valueOf(pageIndex));
+        customerMap.put("sort", sort);
+        customerMap.put("direction", direction);
+        customerMap.put("pageSize", String.valueOf(pageSize));
+
+        return new ResponseEntity<>(customerGateway.getCustomers(customerMap), HttpStatus.OK);
     }
 
-    @GetMapping("/customer")
-    public ResponseEntity<ApiResponse> getAllCustomers(@RequestParam(value = "filterName", required = false) String filterName,
-                                                    @RequestParam(value = "filterValue", required = false) String filterValue,
-                                                    @RequestParam(value = "page", required = false) Integer page,
-                                                    @RequestParam(value = "sort", required = false) String sort,
-                                                    @RequestParam(value = "direction", required = false) String direction,
-                                                    @RequestParam(value = "pageSize", required = false) Integer pageSize) {
-
-        Map<String, String> map = new HashMap<>();
-        map.put("filterName", filterName);
-        map.put("filterValue", filterValue);
-        map.put("page", String.valueOf(page));
-        map.put("sort", sort);
-        map.put("direction", direction);
-        map.put("pageSize", String.valueOf(pageSize));
-
-        return new ResponseEntity<>(customerGateway.getAllCustomers(map), HttpStatus.OK);
-    }
 
 }
