@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Map;
 
-@FeignClient(name = "customer-api", url = "${customer.api.url}")
+@FeignClient(name = "customer-api", url = "${api.url.customer}")
 
 public interface CustomerGateway {
 

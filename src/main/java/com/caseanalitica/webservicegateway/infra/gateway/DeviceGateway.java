@@ -1,6 +1,6 @@
 package com.caseanalitica.webservicegateway.infra.gateway;
 
-import com.caseanalitica.webservicegateway.app.dto.ApiResponse;
+import com.caseanalitica.commons.ApiResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;

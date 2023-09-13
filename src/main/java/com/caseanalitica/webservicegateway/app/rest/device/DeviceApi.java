@@ -1,6 +1,6 @@
 package com.caseanalitica.webservicegateway.app.rest.device;
 
-import com.caseanalitica.webservicegateway.app.dto.ApiResponse;
+import com.caseanalitica.commons.ApiResponse;
 import com.caseanalitica.webservicegateway.infra.gateway.DeviceGateway;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
