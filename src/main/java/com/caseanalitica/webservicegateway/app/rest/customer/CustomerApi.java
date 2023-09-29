@@ -1,6 +1,7 @@
 package com.caseanalitica.webservicegateway.app.rest.customer;
 
 import com.caseanalitica.commons.ApiResponse;
+import com.caseanalitica.webservicegateway.app.dto.customer.AddressRequest;
 import com.caseanalitica.webservicegateway.infra.gateway.CustomerGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,9 +38,24 @@ public class CustomerApi {
     }
 
     @GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
-    public ResponseEntity<ApiResponse> getOneCustomer(@PathVariable final String id){
+    public ResponseEntity<ApiResponse> getOneCustomer(@PathVariable final Long id){
         return new ResponseEntity<>(customerGateway.getOneCustomer(id), HttpStatus.OK);
     }
 
+    @PostMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse> createCustomerAddress(@RequestBody final AddressRequest request) {
+        return new ResponseEntity<>(customerGateway.createCustomerAddress(request), HttpStatus.OK);
+    }
+
+    @PatchMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse> updateCustomerAddress(@RequestBody final AddressRequest request) {
+        return new ResponseEntity<>(customerGateway.updateCustomerAddress(request), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse> deleteCustomer(@PathVariable final Long id){
+        return new ResponseEntity<>(customerGateway.deleteCustomerAddress(id), HttpStatus.OK);
+    }
 
 }

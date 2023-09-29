@@ -7,6 +7,8 @@ import lombok.Setter;
 @Setter
 public class AddressRequest {
 
+    private Long id;
+    private Long customerId;
     private String cep;
     private String street;
     private String number;
@@ -16,5 +18,6 @@ public class AddressRequest {
     private String cityId;
     private String city;
     private String state;
+    private Boolean status;
 
 }
