@@ -1,14 +1,12 @@
 package com.caseanalitica.webservicegateway.app.rest.customer;
 
 import com.caseanalitica.commons.ApiResponse;
+import com.caseanalitica.webservicegateway.app.dto.customer.AddressRequest;
 import com.caseanalitica.webservicegateway.infra.gateway.CustomerGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,5 +37,25 @@ public class CustomerApi {
         return new ResponseEntity<>(customerGateway.getCustomers(customerMap), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse> getOneCustomer(@PathVariable final Long id){
+        return new ResponseEntity<>(customerGateway.getOneCustomer(id), HttpStatus.OK);
+    }
+
+    @PostMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse> createCustomerAddress(@RequestBody final AddressRequest request) {
+        return new ResponseEntity<>(customerGateway.createCustomerAddress(request), HttpStatus.OK);
+    }
+
+    @PatchMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse> updateCustomerAddress(@RequestBody final AddressRequest request) {
+        return new ResponseEntity<>(customerGateway.updateCustomerAddress(request), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse> deleteCustomer(@PathVariable final Long id){
+        return new ResponseEntity<>(customerGateway.deleteCustomerAddress(id), HttpStatus.OK);
+    }
 
 }

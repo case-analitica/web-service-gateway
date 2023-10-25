@@ -26,5 +26,6 @@ public class CustomerRequest {
     private String active;
     private List<ContactRequest> contacts;
     private List<AddressRequest> addresses;
+    private List<AddressRequest> deliveryAddresses;
 
 }

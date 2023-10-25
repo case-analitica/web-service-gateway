@@ -1,19 +1,16 @@
 package com.caseanalitica.webservicegateway.app.rest.device;
 
-import com.caseanalitica.webservicegateway.app.dto.ApiResponse;
+import com.caseanalitica.commons.ApiResponse;
 import com.caseanalitica.webservicegateway.infra.gateway.DeviceGateway;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/device-api")
+@RequestMapping("/device")
 public class DeviceApi {
 
     private final DeviceGateway deviceGateway;
@@ -22,13 +19,13 @@ public class DeviceApi {
         this.deviceGateway = deviceGateway;
     }
 
-    @GetMapping("/device")
-    public ResponseEntity<ApiResponse> getAllDevices(@RequestParam(value = "filterName", required = false) String filterName,
-                                                     @RequestParam(value = "filterValue", required = false) String filterValue,
-                                                     @RequestParam(value = "page", required = false) Integer page,
-                                                     @RequestParam(value = "sort", required = false) String sort,
-                                                     @RequestParam(value = "direction", required = false) String direction,
-                                                     @RequestParam(value = "pageSize", required = false) Integer pageSize) {
+    @GetMapping
+    public ResponseEntity<ApiResponse> getAllDevices(@RequestParam(value = "filterName", required = false, defaultValue = "") String filterName,
+                                                     @RequestParam(value = "filterValue", required = false, defaultValue = "") String filterValue,
+                                                     @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+                                                     @RequestParam(value = "sort", required = false, defaultValue = "description") String sort,
+                                                     @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
+                                                     @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
 
         Map<String, String> map = new HashMap<>();
         map.put("filterName", filterName);

@@ -4,10 +4,20 @@ server:
 spring:
   application:
     name: web-service-gateway
-
-customer:
-  service:
-    url: ${GATEWAY_CUSTOMER_URL:localhost:8082}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  jmx:
+    enabled: false
+  datasource:
+    driver-class-name:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:caseanalitica}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
 
 eureka:
   instance:
@@ -18,5 +28,5 @@ eureka:
 
 api:
   url:
-    customer: "http://localhost:8082"
-    device: "http://localhost:8083"
+    customer: ${CUSTOMER_API_URL:localhost:8082}
+    device: ${DEVICE_API_URL:localhost:8083}
