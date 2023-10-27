@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DeviceResponse {
+public class Device {
 
     private Long id;
     private String description;
@@ -16,6 +16,6 @@ public class DeviceResponse {
     private String model;
     private String serialNumber;
     private String tag;
-    private CalibStatus calibStatus;
+    private CalibrationStatus calibrationStatus;
 
 }

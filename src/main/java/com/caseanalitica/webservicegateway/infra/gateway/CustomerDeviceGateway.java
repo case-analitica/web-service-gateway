@@ -1,0 +1,16 @@
+package com.caseanalitica.webservicegateway.infra.gateway;
+
+import com.caseanalitica.commons.ApiResponse;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.cloud.openfeign.SpringQueryMap;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.Map;
+
+@FeignClient(name = "customer-device-api", url = "${api.url.customer-device}")
+public interface CustomerDeviceGateway {
+
+    @GetMapping("/api/customer-device")
+    ApiResponse getAllDevices(@SpringQueryMap Map<String, String> queryMap);
+
+}

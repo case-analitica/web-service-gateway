@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.Getter;
 
 @Getter
-public enum CalibStatus {
+public enum CalibrationStatus {
 
     REALIZED("Realizado"),
     PROGRAMMED("Programado"),
@@ -12,7 +12,7 @@ public enum CalibStatus {
 
     private final String value;
 
-    CalibStatus(String value) {
+    CalibrationStatus(String value) {
         this.value = value;
     }
 
