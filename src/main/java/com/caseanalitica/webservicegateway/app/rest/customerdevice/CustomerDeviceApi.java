@@ -26,7 +26,7 @@ public class CustomerDeviceApi {
     public ResponseEntity<ApiResponse> getAllDevices(@RequestParam(value = "filterName", required = false, defaultValue = "") String filterName,
                                                      @RequestParam(value = "filterValue", required = false, defaultValue = "") String filterValue,
                                                      @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
-                                                     @RequestParam(value = "sort", required = false, defaultValue = "description") String sort,
+                                                     @RequestParam(value = "sort", required = false, defaultValue = "id") String sort,
                                                      @RequestParam(value = "direction", required = false, defaultValue = "asc") String direction,
                                                      @RequestParam(value = "pageSize", required = false, defaultValue = "10") Integer pageSize) {
 

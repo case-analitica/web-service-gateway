@@ -12,7 +12,7 @@ public class CustomerDevice {
 
     private String control;
 
-    private CustomerDeviceModel model;
+    private CustomerDeviceModel deviceModel;
 
     private String serialNumber;
 
@@ -22,7 +22,9 @@ public class CustomerDevice {
 
     private String accessories;
 
-    private CustomerDeviceType customerDeviceType;
+    private CustomerDeviceType deviceType;
+
+    private CustomerDeviceGroup deviceGroup;
 
     private Manufacturer manufacturer;
 
