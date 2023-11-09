@@ -26,7 +26,7 @@ public class CustomerDevice {
 
     private CustomerDeviceGroup deviceGroup;
 
-    private Manufacturer manufacturer;
+    private Manufacturer deviceManufacturer;
 
     private String notes;
 
