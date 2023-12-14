@@ -5,7 +5,6 @@ import com.caseanalitica.webservicegateway.app.dto.standard.Standard;
 import com.caseanalitica.webservicegateway.infra.gateway.InstrumentAndStandardGateway;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

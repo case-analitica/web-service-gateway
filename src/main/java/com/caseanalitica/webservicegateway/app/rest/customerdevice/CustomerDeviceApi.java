@@ -2,10 +2,8 @@ package com.caseanalitica.webservicegateway.app.rest.customerdevice;
 
 import com.caseanalitica.commons.ApiResponse;
 import com.caseanalitica.webservicegateway.app.dto.customerdevice.CustomerDevice;
-import com.caseanalitica.webservicegateway.app.dto.instrument.Instrument;
 import com.caseanalitica.webservicegateway.infra.gateway.CustomerDeviceGateway;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
