@@ -46,10 +46,4 @@ public class CalibrationControlApi {
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 
-    @GetMapping(value = "/calibrations-due-month", produces = {"application/json", "application/xml", "application/x-yaml"})
-    public ResponseEntity<ApiResponse<CalibrationDue>> getCalibrationsDueInMonth(){
-        var response = calibrationGateway.getCalibrationsDue();
-        return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
-    }
-
 }

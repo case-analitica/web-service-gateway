@@ -8,6 +8,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -26,7 +27,10 @@ public interface CalibrationGateway {
     @PostMapping("/api/calibration-control")
     ApiResponse<CalibrationControl> saveCalibrationControl(CalibrationControl calibrationControl);
 
-    @PostMapping("/api/calibration-control/calibrations-due-month")
-    ApiResponse<CalibrationDue> getCalibrationsDue();
+    @GetMapping("/api/calibration-due/calibrations-due-month")
+    ApiResponse<CalibrationDue> getCalibrationDueInCurrentMonth(@RequestParam Integer pageSize);
+
+    @GetMapping("/api/calibration-due/calibrations-due-year")
+    ApiResponse<CalibrationDue> getCalibrationDueInCurrentYear(@RequestParam Integer pageSize);
 
 }
