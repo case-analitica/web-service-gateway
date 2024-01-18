@@ -1,11 +1,11 @@
-package com.caseanalitica.webservicegateway.app.dto.commons;
+package com.caseanalitica.webservicegateway.app.dto.device;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Manufacturer {
+public class DeviceType {
 
     private Long id;
 

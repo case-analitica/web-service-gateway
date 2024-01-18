@@ -1,4 +1,4 @@
-package com.caseanalitica.webservicegateway.app.dto.customerdevice;
+package com.caseanalitica.webservicegateway.app.dto.device;
 
 import com.caseanalitica.webservicegateway.app.dto.commons.Manufacturer;
 import lombok.Getter;
@@ -6,13 +6,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CustomerDevice {
+public class Device {
 
     private Long id;
 
     private String control;
 
-    private CustomerDeviceModel deviceModel;
+    private DeviceModel model;
 
     private String serialNumber;
 
@@ -22,11 +22,11 @@ public class CustomerDevice {
 
     private String accessories;
 
-    private CustomerDeviceType deviceType;
+    private DeviceType type;
 
-    private CustomerDeviceGroup deviceGroup;
+    private DeviceGroup group;
 
-    private Manufacturer deviceManufacturer;
+    private Manufacturer manufacturer;
 
     private String notes;
 
