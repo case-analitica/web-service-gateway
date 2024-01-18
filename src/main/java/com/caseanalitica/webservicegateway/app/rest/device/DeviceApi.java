@@ -38,9 +38,15 @@ public class DeviceApi {
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 
+    @GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse<Device>> getOneCustomer(@PathVariable final Long id) {
+        var response = deviceGateway.getOneDevice(id);
+        return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
+    }
+
     @PostMapping
-    public ResponseEntity<ApiResponse<Device>> saveCustomerDevice(Device device) {
-        var response = deviceGateway.saveCustomerDevice(device);
+    public ResponseEntity<ApiResponse<Device>> saveDevice(Device device) {
+        var response = deviceGateway.saveDevice(device);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 
