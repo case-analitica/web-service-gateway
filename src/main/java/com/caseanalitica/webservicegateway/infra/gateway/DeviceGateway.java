@@ -4,9 +4,7 @@ import com.caseanalitica.commons.ApiResponse;
 import com.caseanalitica.webservicegateway.app.dto.device.Device;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -21,4 +19,10 @@ public interface DeviceGateway {
 
     @PostMapping("/api/device")
     ApiResponse<Device> saveDevice(Device device);
+
+    @PatchMapping("/api/device")
+    ApiResponse<Device> updateDevice(Device request);
+
+    @DeleteMapping("/api/device/{id}")
+    ApiResponse<Device> deleteDevice(@PathVariable Long id);
 }

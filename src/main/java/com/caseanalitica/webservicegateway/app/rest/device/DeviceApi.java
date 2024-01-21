@@ -50,4 +50,17 @@ public class DeviceApi {
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 
+    @PatchMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse<Device>> updateDevice(@RequestBody final Device request) {
+        var response = deviceGateway.updateDevice(request);
+        return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
+    }
+
+    @DeleteMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
+    public ResponseEntity<ApiResponse<Device>> deleteDevice(@PathVariable final Long id) {
+        var response = deviceGateway.deleteDevice(id);
+        return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
+    }
+
 }
