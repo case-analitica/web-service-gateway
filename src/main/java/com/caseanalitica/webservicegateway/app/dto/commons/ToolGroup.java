@@ -9,6 +9,6 @@ public class ToolGroup {
 
     private Long id;
 
-    private String groupName;
+    private String name;
 
 }

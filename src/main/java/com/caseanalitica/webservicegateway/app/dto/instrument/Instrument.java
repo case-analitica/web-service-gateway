@@ -15,7 +15,7 @@ public class Instrument {
     private ToolGroup toolGroup;
     private Group group;
     private Manufacturer manufacturer;
-    private InstrumentModel instrumentModel;
+    private InstrumentModel model;
     private String serialNumber;
     private String tag;
 
