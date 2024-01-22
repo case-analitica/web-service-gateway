@@ -8,7 +8,7 @@ import lombok.Setter;
 public class InstrumentModel {
 
     private Long id;
-    private String model;
+    private String name;
     private String image;
 
 }
