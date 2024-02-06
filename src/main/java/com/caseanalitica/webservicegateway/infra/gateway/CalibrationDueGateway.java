@@ -12,20 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
-@FeignClient(name = "calibration-api", url = "${api.url.calibration}")
-public interface CalibrationGateway {
-
-    @GetMapping("/api/calibration-program")
-    ApiResponse<CalibrationProgram> getAllCalibrationsProgram(@SpringQueryMap Map<String, String> queryMap);
-
-    @PostMapping("/api/calibration-program")
-    ApiResponse<CalibrationProgram> saveCalibrationProgram(CalibrationProgram calibrationProgram);
-
-    @GetMapping("/api/calibration-control")
-    ApiResponse<CalibrationControl> getAllCalibrationsControl(@SpringQueryMap Map<String, String> queryMap);
-
-    @PostMapping("/api/calibration-control")
-    ApiResponse<CalibrationControl> saveCalibrationControl(CalibrationControl calibrationControl);
+@FeignClient(name = "calibration-due-api", url = "${api.url.calibration}")
+public interface CalibrationDueGateway {
 
     @GetMapping("/api/calibration-due/calibrations-due-month")
     ApiResponse<CalibrationDue> getCalibrationDueInCurrentMonth(@RequestParam Integer pageSize);

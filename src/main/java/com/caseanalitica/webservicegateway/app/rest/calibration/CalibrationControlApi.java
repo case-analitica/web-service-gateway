@@ -2,7 +2,7 @@ package com.caseanalitica.webservicegateway.app.rest.calibration;
 
 import com.caseanalitica.commons.ApiResponse;
 import com.caseanalitica.webservicegateway.app.dto.calibration.CalibrationControl;
-import com.caseanalitica.webservicegateway.infra.gateway.CalibrationGateway;
+import com.caseanalitica.webservicegateway.infra.gateway.CalibrationControlGateway;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ import java.util.Map;
 @RequestMapping("/calibration-control")
 public class CalibrationControlApi {
 
-    private final CalibrationGateway calibrationGateway;
+    private final CalibrationControlGateway calibrationControlGateway;
 
     @GetMapping
     public ResponseEntity<ApiResponse<CalibrationControl>> getAllCalibrationsControl(
@@ -35,13 +35,13 @@ public class CalibrationControlApi {
         map.put("direction", direction);
         map.put("pageSize", String.valueOf(pageSize));
 
-        var response = calibrationGateway.getAllCalibrationsControl(map);
+        var response = calibrationControlGateway.getAllCalibrationsControl(map);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 
     @PostMapping
     public ResponseEntity<ApiResponse<CalibrationControl>> saveCalibrationControl(CalibrationControl calibrationControl) {
-        var response = calibrationGateway.saveCalibrationControl(calibrationControl);
+        var response = calibrationControlGateway.saveCalibrationControl(calibrationControl);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 

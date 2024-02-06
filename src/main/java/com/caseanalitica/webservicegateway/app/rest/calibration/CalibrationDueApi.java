@@ -2,7 +2,7 @@ package com.caseanalitica.webservicegateway.app.rest.calibration;
 
 import com.caseanalitica.commons.ApiResponse;
 import com.caseanalitica.webservicegateway.app.dto.calibration.CalibrationDue;
-import com.caseanalitica.webservicegateway.infra.gateway.CalibrationGateway;
+import com.caseanalitica.webservicegateway.infra.gateway.CalibrationDueGateway;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/calibration-due")
 public class CalibrationDueApi {
 
-    private final CalibrationGateway calibrationGateway;
+    private final CalibrationDueGateway calibrationDueGateway;
 
     @GetMapping("/month")
     public ResponseEntity<ApiResponse<CalibrationDue>> getCalibrationDueInCurrentMonth(
             @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize
     ) {
-        var response = calibrationGateway.getCalibrationDueInCurrentMonth(pageSize);
+        var response = calibrationDueGateway.getCalibrationDueInCurrentMonth(pageSize);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 
@@ -30,7 +30,7 @@ public class CalibrationDueApi {
     public ResponseEntity<ApiResponse<CalibrationDue>> getCalibrationDueInCurrentYear(
             @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize
     ) {
-        var response = calibrationGateway.getCalibrationDueInCurrentYear(pageSize);
+        var response = calibrationDueGateway.getCalibrationDueInCurrentYear(pageSize);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
     }
 
