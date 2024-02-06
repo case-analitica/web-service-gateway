@@ -29,4 +29,6 @@ eureka:
 api:
   url:
     customer: ${CUSTOMER_API_URL:localhost:8082}
-    device: ${DEVICE_API_URL:localhost:8083}
+    standard-instrument: ${STANDARD_INSTRUMENT_API_URL:localhost:8083}
+    calibration: ${CALIBRATION:localhost:8084}
+    device: ${DEVICE_API_URL:localhost:8085}

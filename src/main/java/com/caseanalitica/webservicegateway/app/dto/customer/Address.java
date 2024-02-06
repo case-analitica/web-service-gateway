@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AddressRequest {
+public class Address {
 
     private Long id;
     private Long customerId;

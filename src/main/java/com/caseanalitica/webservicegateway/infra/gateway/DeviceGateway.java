@@ -1,9 +1,10 @@
 package com.caseanalitica.webservicegateway.infra.gateway;
 
 import com.caseanalitica.commons.ApiResponse;
+import com.caseanalitica.webservicegateway.app.dto.device.Device;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -11,6 +12,17 @@ import java.util.Map;
 public interface DeviceGateway {
 
     @GetMapping("/api/device")
-    ApiResponse getAllDevices(@SpringQueryMap Map<String, String> queryMap);
+    ApiResponse<Device> getAllDevices(@SpringQueryMap Map<String, String> queryMap);
 
+    @GetMapping("/api/device/{id}")
+    ApiResponse<Device> getOneDevice(@PathVariable Long id);
+
+    @PostMapping("/api/device")
+    ApiResponse<Device> saveDevice(Device device);
+
+    @PatchMapping("/api/device")
+    ApiResponse<Device> updateDevice(Device request);
+
+    @DeleteMapping("/api/device/{id}")
+    ApiResponse<Device> deleteDevice(@PathVariable Long id);
 }

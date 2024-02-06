@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class CustomerRequest {
+public class Customer {
 
     private String id;
     private String customerType;
@@ -24,8 +24,8 @@ public class CustomerRequest {
     private String fax;
     private String email;
     private String active;
-    private List<ContactRequest> contacts;
-    private List<AddressRequest> addresses;
-    private List<AddressRequest> deliveryAddresses;
+    private List<Contact> contacts;
+    private List<Address> addresses;
+    private List<Address> deliveryAddresses;
 
 }

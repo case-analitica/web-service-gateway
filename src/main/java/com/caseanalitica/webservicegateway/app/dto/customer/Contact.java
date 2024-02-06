@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ContactRequest {
+public class Contact {
 
     private String name;
     private String email;
