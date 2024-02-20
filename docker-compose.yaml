@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  service-discovery:
+  web-service-gateway:
     image: web-service-gateway:0.0.1
     container_name: web-service-gateway
     build: .
