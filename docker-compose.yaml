@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  service-discovery:
+    image: web-service-gateway:0.0.1
+    container_name: web-service-gateway
+    build: .
+    ports:
+      - 8081:8081
+    networks:
+      - ca-networks
+
+networks:
+  ca-networks:
+    driver: bridge
