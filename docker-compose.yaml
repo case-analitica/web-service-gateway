@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'
 
 services:
   web-service-gateway:
@@ -13,3 +13,4 @@ services:
 networks:
   ca-networks:
     driver: bridge
+    name: ca-networks
