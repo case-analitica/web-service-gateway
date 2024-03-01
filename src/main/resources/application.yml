@@ -1,5 +1,5 @@
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${GATEWAY_SERVER_PORT}
 
 spring:
   application:
@@ -15,9 +15,9 @@ spring:
     enabled: false
   datasource:
     driver-class-name:
-    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:5432/${POSTGRES_DB:caseanalitica}
-    username: ${POSTGRES_USER:postgres}
-    password: ${POSTGRES_PASSWORD:postgres}
+    url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
+    username: ${DB_USER_FILE}
+    password: ${DB_PASSWORD_FILE}
 
 eureka:
   instance:
