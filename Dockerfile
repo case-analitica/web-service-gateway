@@ -8,7 +8,7 @@ RUN gradle bootJar
 
 FROM eclipse-temurin:17.0.5_8-jre-alpine
 
-COPY --from=builder /usr/app/build/libs/web-service-gateway.jar /opt/app/web-service-gateway.jar
+COPY --from=builder /usr/app/build/libs/*.jar /opt/app/web-service-gateway.jar
 
 RUN addgroup -S spring && adduser -S spring -G spring
 USER spring:spring
