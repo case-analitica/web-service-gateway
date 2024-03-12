@@ -14,21 +14,28 @@ spring:
   jmx:
     enabled: false
   datasource:
-    driver-class-name:
-    url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
-    username: ${DB_USER_FILE}
-    password: ${DB_PASSWORD_FILE}
+    url: jdbc:postgresql://${POSTGRES_HOST:postgres}:5432/${POSTGRES_DB:postgres}
+    username: ${DB_USER_FILE:postgres}
+    password: ${DB_PASSWORD_FILE:postgres}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000/realms/caseanalitica
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
 
 eureka:
   instance:
     hostname: ${EUREKA_HOST:localhost}
   client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:8081/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${EUREKA_SERVER_PORT:8081}/eureka/
 
 api:
   url:
-    customer: ${CUSTOMER_API_URL:localhost:8082}
-    standard-instrument: ${STANDARD_INSTRUMENT_API_URL:localhost:8083}
-    calibration: ${CALIBRATION:localhost:8084}
-    device: ${DEVICE_API_URL:localhost:8085}
+    auth: ${AUTH_API_URL}
+    customer: ${CUSTOMER_API_URL}
+    standard-instrument: ${STANDARD_INSTRUMENT_API_URL}
+    calibration: ${CALIBRATION_API_URL}
+    device: ${DEVICE_API_URL}

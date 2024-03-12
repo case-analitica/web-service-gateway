@@ -1,16 +1,89 @@
-version: '3.8'
+version: "3.9"
 
 services:
+  postgres:
+    image: postgres:16.2-alpine
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: caseanalitica
+      POSTGRES_USER_FILE: /run/secrets/db_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+      - db_user
+      - db_password
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1G
+          # pids: 100
+        reservations:
+          cpus: "0.1"
+          memory: 20M
+      restart_policy:
+        condition: on-failure
+    networks:
+      - ca-database
+
+  # service-discovery:
+  #   image: service-discovery:latest
+  #   env_file:
+  #     - .env
+  #   ports:
+  #     - 8081:8081
+  #   networks:
+  #     - ca-network
+
   web-service-gateway:
-    image: web-service-gateway:0.0.1
-    container_name: web-service-gateway
+    depends_on:
+      - postgres
+#      - service-discovery
     build: .
     ports:
-      - 8080:8080
+      - "8080:8080"
+#    env_file:
+#      - .env
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      GATEWAY_SERVER_PORT: 8080
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: caseanalitica
+      DB_USER_FILE: /run/secrets/db_user
+      DB_PASSWORD_FILE: /run/secrets/db_password
+    secrets:
+#      - source: db_user
+#        target: DB_USER_FILE
+#      - source: db_password
+#        target: DB_PASSWORD_FILE
+      - db_user
+      - db_password
     networks:
-      - ca-networks
+      - ca-network
+      - ca-database
 
 networks:
-  ca-networks:
-    driver: bridge
-    name: ca-networks
+  ca-network:
+    driver: overlay
+    name: ca-network
+    attachable: true
+  ca-database:
+    driver: overlay
+    name: ca-database
+    attachable: true
+
+volumes:
+  postgres:
+    driver: local
+
+secrets:
+  db_password:
+    # external: true
+    file: db_password.txt
+  db_user:
+    # external: true
+    file: db_user.txt
+

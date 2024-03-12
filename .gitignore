@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+./gradle.properties
+./db_password.txt
+./db_user.txt

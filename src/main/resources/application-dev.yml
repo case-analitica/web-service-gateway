@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name:
+    url: jdbc:postgresql://localhost:5432/caseanalitica
+    username: postgres
+    password: postgres
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8081/eureka/
+
+api:
+  url:
+    auth: localhost:9000
+    customer: localhost:8082
+    standard-instrument: localhost:8083
+    calibration: localhost:8084
+    device: localhost:8085
+
